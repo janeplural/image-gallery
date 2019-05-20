@@ -1,0 +1,29 @@
+.close-button {
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  overflow: hidden;
+  float: right;
+  background-color: transparent;
+}
+.close-button__text {
+  visibility: hidden;
+}
+%nav-button-shared {
+  border: none;
+  background-color: transparent;
+}
+.nav-button--prev {
+  @extend %nav-button-shared;
+  float: left;
+}
+.nav-button--prev::before {
+  content: '\27F5  ';
+}
+.nav-button--next {
+  @extend %nav-button-shared;
+  float: right;
+}
+.nav-button--next::after {
+  content: '  \27F6';
+}

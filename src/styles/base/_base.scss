@@ -1,0 +1,52 @@
+/*****************/
+/*   VARIABLES   */
+/*****************/
+
+// Colors
+$white: #F0F3F3;
+$black: #101625; 
+
+// Spacing
+$s-size: 1.6rem;
+$m-size: 1.8rem;
+$l-size: 3.6rem;
+$xl-size: 4.8rem;
+$l-breakpoint: 120rem;
+
+/*****************/
+/*   TOP LEVEL   */
+/*****************/
+
+html {
+  font-size: 62.5%; // 10px
+}
+body {
+  font-family: 'Quicksand', 'Helvetica', 'Arial', sans-serif;
+  font-size: $m-size;
+  color: $black;
+  background-color: $white;
+}
+
+/****************/
+/* TAG ELEMENTS */
+/****************/
+
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: default;
+}
+h1 {
+  font-size: $xl-size;
+}
+blockquote {
+  opacity: 0.6;
+}
+cite {
+  font-size: $s-size;
+  opacity: 0.6;
+}
+header {
+  padding: $l-size;
+}
