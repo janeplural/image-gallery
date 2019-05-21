@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Images from './Images';
 import ImageModal from './ImageModal';
 
@@ -15,52 +15,43 @@ const imgUrls = [
   'https://source.unsplash.com/5rchckwczuc',
   'https://source.unsplash.com/kiI9wQPFw8E',
   'https://source.unsplash.com/VrrZAVkzfWE'
- ];
+ ]
 
 
-export default class Gallery extends React.Component {
-  state = {
-    pickedImg: undefined
-  };
-  handlePick = (index) => {
-    this.setState(() => ({ pickedImg: index }));
-  };
-  handleClearPick = (e) => {
-    e.preventDefault();
-    this.setState(() => ({ pickedImg: undefined }))
-  };
-  handlePickPrev = (e) => {
-    e.preventDefault();
-    this.setState((prevState) => ({ pickedImg: prevState.pickedImg - 1 }));
-  };
-  handlePickNext = (e) => {
-    e.preventDefault();
-    this.setState((prevState) => ({ pickedImg: prevState.pickedImg + 1 }));
-  };
-  render() {
-    return (
-      <div>
-        <header>
-          <h1>Image Gallery</h1>
-          <blockquote cite="https://www.brainyquote.com/quotes/albert_einstein_106912">
-            <p>Look deep into nature, and then you will understand everything better.</p>
-          </blockquote>
-          <cite>– Albert Einstein</cite>
-        </header>
-        <Images
-          urls={imgUrls}
-          handlePick={this.handlePick}
-        />
-        <ImageModal
-          pickedImg={this.state.pickedImg}
-          length={imgUrls.length}
-          src={imgUrls[this.state.pickedImg]}
-          handleClearPick={this.handleClearPick}
-          handlePickPrev={this.handlePickPrev}
-          handlePickNext={this.handlePickNext}
-        />
-      </div>
-    );
+export default function Gallery () {
+  const [pickedImg, setImg] = useState(null);
+
+  function handlePick(index) {
+    return setImg(index);
   }
+  function handleClearPick(e) {
+    e.preventDefault();
+    return setImg(null);
+  }
+  function handlePickPrev(e) {
+    e.preventDefault();
+    return setImg(prevState => prevState - 1);
+  }
+  function handlePickNext(e) {
+    e.preventDefault();
+    return setImg(prevState => prevState + 1);
+  }
+
+  return (
+    <div>
+      <Images
+        urls={imgUrls}
+        handlePick={handlePick}
+      />
+      <ImageModal
+        pickedImg={pickedImg}
+        length={imgUrls.length}
+        src={imgUrls[pickedImg]}
+        handleClearPick={handleClearPick}
+        handlePickPrev={handlePickPrev}
+        handlePickNext={handlePickNext}
+      />
+    </div>
+  );
 }
 
