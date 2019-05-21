@@ -11,7 +11,7 @@ module.exports = (env) => {
   return {
     entry: './src/app.js',
     output: {
-      path: path.join(__dirname, 'docs'),
+      path: path.join(__dirname, 'public'),
       filename: 'bundle.js'
     },
     module: {
@@ -39,13 +39,8 @@ module.exports = (env) => {
     ],
     devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
     devServer: {
-      contentBase: path.join(__dirname, 'docs')
+      contentBase: path.join(__dirname, 'public')
     },
     mode: 'development'
   };
 };
-// webpack config file must live in root folder
-// need entry -> output
-// entry can be a relative path
-// output must be an absolute path
-
