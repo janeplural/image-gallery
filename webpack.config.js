@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+var autoprefixer = require('autoprefixer');
 
 module.exports = (env) => {
   const isProduction = env === 'production';
@@ -22,15 +23,20 @@ module.exports = (env) => {
       }, {
         test: /\.s?css$/,
         use: [
+          MiniCssExtractPlugin.loader,
+          { loader: "css-loader", options: {} },
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: "postcss-loader",
             options: {
-              publicPath: '../',
-              hmr: process.env.NODE_ENV === 'development',
-            },
+              ident: 'postcss',
+              plugins: [
+                require('autoprefixer')({
+                  'browsers': ['> 1%', 'last 2 versions']
+                }),
+              ]
+            }
           },
-          'css-loader',
-          'sass-loader'
+          { loader: "sass-loader", options: {} }
         ]
       }]
     },
