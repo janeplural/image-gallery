@@ -39,6 +39,13 @@ export default function Gallery () {
 
   return (
     <div>
+      <header>
+        <h1>Image Gallery</h1>
+        <blockquote cite="https://www.brainyquote.com/quotes/albert_einstein_106912">
+          <p>Look deep into nature, and then you will understand everything better.</p>
+        </blockquote>
+        <cite>– Albert Einstein</cite>
+      </header>
       <Images
         urls={imgUrls}
         handlePick={handlePick}
